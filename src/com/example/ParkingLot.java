@@ -58,7 +58,7 @@ public class ParkingLot {
     }
 
     assignVehicleToSpot(vehicle, freeParkingSpot.get());
-    return new ParkingTicket(freeParkingSpot.get(), LocalDateTime.now(), parkingRate);
+    return new ParkingTicket(freeParkingSpot.get(), LocalDateTime.now().minusHours(2), parkingRate);
   }
 
   public ParkingReceipt exitParking(ParkingTicket parkingTicket) {
@@ -68,7 +68,7 @@ public class ParkingLot {
     LocalDateTime enterDate = parkingTicket.getEnterDate();
     LocalDateTime exitDate = LocalDateTime.now();
 
-    long seconds = Duration.between(exitDate, enterDate).toSeconds();
+    long seconds = Duration.between(enterDate, exitDate).toSeconds();
     double totalCost = (seconds * parkingTicket.getRate()) / 3600;
 
     return new ParkingReceipt(parkingSpot, totalCost, enterDate, exitDate);

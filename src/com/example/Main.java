@@ -21,8 +21,6 @@ public class Main {
     //System.out.println(parkingLot.getParkingSpot(ParkingSpotType.COMPACT));
     //System.out.println(parkingLot.getParkingSpot(ParkingSpotType.LARGE));
 
-    Thread.sleep(10000);
-
     ParkingReceipt parkingReceipt1 = parkingLot.exitParking(parkingTicket1);
     System.out.println(parkingReceipt1);
   }
